@@ -1,1 +1,1 @@
-# EZ-Umpire
+# EZ Umpire
