@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainBackground" onScroll="#update" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../CSS/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainMenuController">
+   <children>
+      <MenuBar prefHeight="22.0" prefWidth="1000.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadAction" text="Load" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#settingListener" text="Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeAction" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#currentViewUpdate" selected="true" text="Current/Future Games">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="viewGroup" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" onAction="#allViewUpdate" text="All Games" toggleGroup="$viewGroup" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#customViewUpdate" text="Custom" toggleGroup="$viewGroup" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#docAction" text="Documentation" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane fx:id="aPane" dividerPositions="0.6940686784599376" layoutX="19.0" layoutY="39.0" prefHeight="523.0" prefWidth="963.0">
+         <items>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="35.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Text>
+                  <JFXButton layoutX="385.0" layoutY="468.0" onAction="#matchAddAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #318FD7; -fx-text-fill: white;" text="New Game" />
+                  <JFXButton layoutX="518.0" layoutY="468.0" onMouseClicked="#matchDelAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: darkred; -fx-text-fill: white;" text="Delete Game" />
+                  <TableView fx:id="matchList" layoutX="35.0" layoutY="76.0" onMouseReleased="#matchEdit" prefHeight="369.0" prefWidth="594.0">
+                    <columns>
+                      <TableColumn fx:id="idCol" editable="false" prefWidth="35.0" sortable="false" text="ID" />
+                      <TableColumn fx:id="divCol" editable="false" prefWidth="89.0" sortable="false" text="Division" />
+                        <TableColumn fx:id="genderCol" editable="false" prefWidth="68.0" sortable="false" text="Boys/Girls" />
+                        <TableColumn fx:id="timeCol" editable="false" prefWidth="64.0" sortable="false" text="Time" />
+                        <TableColumn fx:id="dateCol" editable="false" prefWidth="112.0" sortable="false" text="Date" />
+                        <TableColumn fx:id="locationCol" editable="false" prefWidth="66.0" sortable="false" text="Location" />
+                        <TableColumn fx:id="presentCol" editable="false" prefWidth="79.0" sortable="false" text="Has Umps" />
+                        <TableColumn fx:id="paidCol" minWidth="0.0" sortable="false" text="Umps Paid" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane prefHeight="521.0" prefWidth="255.0">
+               <children>
+                  <Text layoutX="38.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umpires">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Text>
+                  <JFXButton layoutX="38.0" layoutY="467.0" onAction="#umpAddAction" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: #318FD7; -fx-text-fill: white;" text="New Ump" />
+                  <JFXButton layoutX="154.0" layoutY="467.0" onMouseClicked="#umpDelAction" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: darkred; -fx-text-fill: white;" text="Delete Ump" />
+                  <TableView fx:id="umpList" layoutX="39.0" layoutY="80.0" onMouseReleased="#umpEdit" prefHeight="369.0" prefWidth="207.0">
+                    <columns>
+                      <TableColumn fx:id="nameCol" editable="false" prefWidth="139.0" sortable="false" text="Name" />
+                      <TableColumn fx:id="numMatchCol" editable="false" prefWidth="66.0" sortable="false" text="# games" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

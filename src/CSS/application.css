@@ -1,0 +1,32 @@
+
+
+#background
+{
+	-fx-background-image:url("../Images/stadium.jpg");
+	-fx-background-size:cover ;
+}
+
+#aPane
+{
+	-fx-background-color: #ffffff;
+	-fx-opacity: 0.9;
+}
+
+#mainBackground
+{
+	-fx-background-image:url("../Images/mainBackground.jpg");
+	-fx-background-size:cover ;
+}
+
+#umpBackground
+{
+	-fx-background-image:url("../Images/umpire.jpg");
+	-fx-background-size:cover ;
+}
+
+#matchBackground
+{
+	-fx-background-image:url("../Images/match.jpg");
+	-fx-background-size:cover ;
+}
+
