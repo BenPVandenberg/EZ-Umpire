@@ -30,7 +30,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="View">
                <items>
-                  <RadioMenuItem mnemonicParsing="false" onAction="#currentViewUpdate" selected="true" text="Current/Future Games">
+                  <RadioMenuItem fx:id="currentViewButton" mnemonicParsing="false" onAction="#currentViewUpdate" selected="true" text="Current/Future Games">
                      <toggleGroup>
                         <ToggleGroup fx:id="viewGroup" />
                      </toggleGroup>

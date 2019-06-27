@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,6 +52,9 @@ public class MainMenuController {
     
     @FXML
     private ToggleGroup viewGroup;
+    
+    @FXML
+    private RadioMenuItem currentViewButton;
 
     @FXML
     private SplitPane aPane;
@@ -115,8 +119,8 @@ public class MainMenuController {
      * Changes view so that only games in custom range will be displayed
      */
     @FXML
-    void customViewUpdate(ActionEvent event) throws IOException {
-    	viewMethod = CUSTOM;
+    void customViewUpdate(ActionEvent event) throws IOException {    	
+    	LocalDateTime beforeStart = start, beforeEnd = end;
     	
     	Stage home = new Stage();
     	Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/CustomDateRange.fxml"));
@@ -126,8 +130,25 @@ public class MainMenuController {
     	home.setResizable(false);
     	home.initOwner(mainBackground.getScene().getWindow());
     	home.initModality(Modality.WINDOW_MODAL);
-    	home.setOnHidden(e -> update(null));
+    	home.setOnHidden(e -> customViewValidate(beforeStart, beforeEnd));
     	home.show();
+    }
+    
+    /**
+     * Validates the custom range was changed, otherwise current view is enabled
+     * 
+     * @param beforeStart
+     * @param beforeEnd
+     */
+    void customViewValidate(LocalDateTime beforeStart, LocalDateTime beforeEnd) {
+    	if (beforeStart != start && beforeEnd != end) {
+    		viewMethod = CUSTOM;
+    		update(null);
+    	}
+    	else {
+    		currentViewButton.setSelected(true);
+    		currentViewUpdate(null);
+    	}
     }
     
     /**
