@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Collections;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
@@ -81,9 +82,21 @@ public class MatchController {
      * Updates game fee
      */
     @FXML
-    void divisionAction(ActionEvent event) {
-    	gameFeeTxt.setText("$"+Integer.toString(Match.getFee(divisionCombo.getValue())));
-    	update();
+    void timeAction(ActionEvent event) {
+    	LocalTime temp = (a630Radio.isSelected()) ? LocalTime.of(18, 30) : (a830Radio.isSelected()) ? LocalTime.of(20, 30) : null;
+    	if (temp == null) {
+    		gameFeeTxt.setText("");
+    		return;
+    	}
+    	gameFeeTxt.setText("$"+Integer.toString(Match.getFee(temp)));
+    	loadUmps();
+    }
+    
+    @FXML
+    void recurringAction(ActionEvent event) {
+    	boolean i = recurringCheck.isSelected();
+    	untilTxt.setVisible(i);
+        recurringDP.setVisible(i);
     }
 
     /**
@@ -106,7 +119,11 @@ public class MatchController {
     	
 //    	If game is recurring, a match will be added every week until the deadline (umps do not transfer to new games)
     	if (recurringCheck.isSelected() && recurringDP != null) {
-    		LocalDateTime deadline = LocalDateTime.of(recurringDP.getValue(), LocalTime.of(23, 59));
+    		LocalDateTime deadline;
+    		if (recurringDP.getValue() == null)
+    			deadline = LocalDateTime.MIN;
+    		else
+    			deadline = LocalDateTime.of(recurringDP.getValue(), LocalTime.of(23, 59));
     		
     		if (i.startTime.plusYears(1).isAfter(deadline)) {
     			LocalDateTime working = i.startTime.plusWeeks(1);
@@ -153,13 +170,6 @@ public class MatchController {
     	Stage stage = (Stage) matchBackground.getScene().getWindow();
     	stage.close();
     }
-
-    @FXML
-    void recurringAction(ActionEvent event) {
-    	boolean i = recurringCheck.isSelected();
-    	untilTxt.setVisible(i);
-        recurringDP.setVisible(i);
-    }
     
     /**
      * Loads available umpires only into umpire combo boxes
@@ -191,13 +201,13 @@ public class MatchController {
     	LocalDateTime i = LocalDateTime.of(startTimeDP.getValue(), (a630Radio.isSelected()) ? LocalTime.of(18, 30) : LocalTime.of(20, 30));
        	if (!Control.convertTime(i).equals("INVALID"))
        		for (Umpire u : Control.umpires) {
-               	if (u.isAvailable(i)) {
+               	if (u.isAvailable(i) && !plateCombo.getItems().contains(u)) {
                 	plateCombo.getItems().add(u);
                 	baseCombo.getItems().add(u);
                 }
             }
        	
-       	Collections.sort(plateCombo.getItems());     
+       	Collections.sort(plateCombo.getItems());
        	Collections.sort(baseCombo.getItems());
     	
     	update();
@@ -243,9 +253,9 @@ public class MatchController {
         Match i = Control.matchWorking;
         gameIdTxt.setText(Integer.toString(i.gameID));
         girlsRadio.setSelected(i.gender == 'F');
-        divisionCombo.getItems().addAll("Mite","Tyke","Squirt","Mosquito","Peewee","Bantam","Midget");
+        divisionCombo.getItems().addAll("Minimite","Mite","Squirt","Mosquito","Peewee","Bantam","Midget");
         divisionCombo.setValue(i.division );
-        locationCombo.getItems().addAll("D1", "D2", "D3", "Train", "Omemee");
+        locationCombo.getItems().addAll("D1 Ops", "D2 Ops", "D3 Ops", "JCPS", "Omemee", "Train");
         locationCombo.setValue(i.diamond);
         
         if (i.startTime != null) {

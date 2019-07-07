@@ -3,6 +3,7 @@ package application;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Match implements Changeable, Serializable, Comparable<Match>{
@@ -34,24 +35,25 @@ public class Match implements Changeable, Serializable, Comparable<Match>{
     /**
      * Function to get an umpire
      *
-     * @param div The division to get the fee for
+     * @param time The time of the game to get the fee for
      * @return int, number in $ to be paid to the umpire
      */
-    public static int getFee(String div){
-        int rtn;
-        switch (div.toLowerCase()) {
-            case "peewee": rtn = 25; break;
-            case "bantam": rtn = 30; break;
-            case "midget": rtn = 30; break;
-            default: rtn = 20; break;
-        }
-        return rtn;
+    public static int getFee(LocalTime time){
+    	
+    	if (time.equals(LocalTime.of(18, 30)))
+    		return 30;
+    	if (time.equals(LocalTime.of(20,30)))
+    		return 35;
+    	
+        return 0;
     }
 
     @Override
-    public void update() { 
-    	fee = Match.getFee(division); 
-    	
+    public void update() {
+    	if (startTime == null)
+    		fee = 0;
+    	else
+    		fee = Match.getFee(startTime.toLocalTime());
     }
 
 
@@ -68,7 +70,7 @@ public class Match implements Changeable, Serializable, Comparable<Match>{
     public String toString(){
         String g = (gender == 'M') ? "Boys" : "Girls";
         DateTimeFormatter time = DateTimeFormatter.ofPattern("h:mm");
-		return String.format("%s %s at %s", 
+		return String.format("%s %s, %s", 
         		division,
         		g,
         		startTime.format(time)

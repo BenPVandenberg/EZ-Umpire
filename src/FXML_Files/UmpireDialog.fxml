@@ -99,7 +99,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="matchList" layoutX="24.0" layoutY="17.0" prefHeight="301.0" prefWidth="490.0">
+                        <TableView fx:id="matchList" layoutX="24.0" layoutY="17.0" prefHeight="301.0" prefWidth="491.0">
                           <columns>
                             <TableColumn fx:id="idCol" editable="false" prefWidth="33.0" sortable="false" text="ID" />
                             <TableColumn fx:id="divCol" editable="false" prefWidth="77.0" sortable="false" text="Division" />

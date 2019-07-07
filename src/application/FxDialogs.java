@@ -21,6 +21,7 @@ import java.util.Optional;
 	 * @author Mateus Viccari
 	 * @see https://stackoverflow.com/questions/26341152/controlsfx-dialogs-deprecated-for-what
 	 */
+
 public class FxDialogs {
 
     public static void showInformation(String title, String message) {

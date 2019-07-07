@@ -13,7 +13,7 @@ public class SendEmail {
      * @param toEmail Where the message is to be sent
      * @param msg The message to send
      */
-	public static void send(String toEmail,String msg) {  
+	public static void send(String toEmail,String subject,String msg) {  
 		
 		if (msg.trim().equals("\n") || msg.trim().equals("")) {
 			FxDialogs.showWarning("Can't send an email with no message", "");
@@ -46,7 +46,7 @@ public class SendEmail {
 		     MimeMessage message = new MimeMessage(session);  
 		     message.setFrom(new InternetAddress(email));  
 		     message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-		     message.setSubject("New Assignments");  
+		     message.setSubject(subject);  
 		     message.setText(msg);
 		       
 		    //send the message  

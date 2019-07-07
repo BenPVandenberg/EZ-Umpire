@@ -12,9 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Umpire implements Changeable, Serializable, Comparable<Umpire>  {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	public final int id;
 	public static int NEXT_UMP_ID = 1;
@@ -120,7 +118,7 @@ public class Umpire implements Changeable, Serializable, Comparable<Umpire>  {
     	String rtn = "";
     	DateTimeFormatter tmd = DateTimeFormatter.ofPattern("EEE MMMM d");
     	LocalDate cur = LocalDate.MIN;
-    	String place;
+    	String place,position;
     	
         for (Match t : Control.matches)
         	if (t.startTime.isAfter(MainMenuController.start) && t.startTime.isBefore(MainMenuController.end) && assignments.contains(Control.getReference(t))) {
@@ -128,8 +126,9 @@ public class Umpire implements Changeable, Serializable, Comparable<Umpire>  {
         			rtn += t.startTime.format(tmd) + ":\n";
         			cur = t.startTime.toLocalDate();
         		}
-        		place = (t.diamond.equals("D1") || t.diamond.equals("D2") || t.diamond.equals("D3")) ? "" : " in " + t.diamond;
-        		rtn += "- " + t.toString() + place + "\n";
+        		place =  " at " + t.diamond;
+        		position = (t.plateUmp == Control.getReference(this)) ? "Plate":"Base";
+        		rtn += "- " + t.toString() + place + ": " + position + "\n";
         	}
     	
     	return rtn;
@@ -149,6 +148,7 @@ public class Umpire implements Changeable, Serializable, Comparable<Umpire>  {
     }
     
     public String getName() { return name; }
+    
     public int getNumGamesThisWeek() {
     	int rtn = 0; 
     	for (int i : assignments) {

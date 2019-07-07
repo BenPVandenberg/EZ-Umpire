@@ -57,7 +57,7 @@
                </font>
             </JFXCheckBox>
             <JFXTextField fx:id="gameIdTxt" alignment="CENTER" editable="false" layoutX="100.0" layoutY="27.0" prefHeight="25.0" prefWidth="25.0" />
-            <JFXComboBox fx:id="divisionCombo" layoutX="100.0" layoutY="69.0" onAction="#divisionAction" prefHeight="25.0" prefWidth="121.0" />
+            <JFXComboBox fx:id="divisionCombo" layoutX="100.0" layoutY="69.0" prefHeight="25.0" prefWidth="121.0" />
             <JFXComboBox fx:id="locationCombo" layoutX="100.0" layoutY="143.0" onAction="#update" prefHeight="25.0" prefWidth="121.0" />
             <JFXComboBox fx:id="plateCombo" layoutX="100.0" layoutY="294.0" prefHeight="25.0" prefWidth="121.0" promptText="Plate Ump" />
             <JFXComboBox fx:id="baseCombo" layoutX="100.0" layoutY="334.0" prefHeight="25.0" prefWidth="121.0" promptText="Base Ump" />
@@ -75,12 +75,12 @@
                </toggleGroup>
             </JFXRadioButton>
             <JFXRadioButton fx:id="girlsRadio" layoutX="162.0" layoutY="112.0" text="Girls" toggleGroup="$genderGroup" />
-            <JFXRadioButton fx:id="a630Radio" layoutX="100.0" layoutY="225.0" onAction="#loadUmps" text="6:30">
+            <JFXRadioButton fx:id="a630Radio" layoutX="100.0" layoutY="225.0" onAction="#timeAction" text="6:30">
                <toggleGroup>
                   <ToggleGroup fx:id="timeGroup" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="a830Radio" layoutX="162.0" layoutY="225.0" onAction="#loadUmps" text="8:30" toggleGroup="$timeGroup" />
+            <JFXRadioButton fx:id="a830Radio" layoutX="162.0" layoutY="225.0" onAction="#timeAction" text="8:30" toggleGroup="$timeGroup" />
          </children>
       </Pane>
       <JFXButton fx:id="saveBtn" layoutX="145.0" layoutY="533.0" onAction="#saveAction" prefHeight="37.0" prefWidth="110.0" style="-fx-background-color: darkgreen;" text="Save" textFill="WHITE" />

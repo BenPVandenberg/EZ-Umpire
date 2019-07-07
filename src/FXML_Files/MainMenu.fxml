@@ -24,6 +24,8 @@
               <MenuItem mnemonicParsing="false" onAction="#saveAction" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#loadAction" text="Load" />
                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#generatePayReportAction" text="Pay Report" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#settingListener" text="Settings" />
                   <MenuItem mnemonicParsing="false" onAction="#closeAction" text="Close" />
             </items>
@@ -66,7 +68,7 @@
                         <TableColumn fx:id="dateCol" editable="false" prefWidth="112.0" sortable="false" text="Date" />
                         <TableColumn fx:id="locationCol" editable="false" prefWidth="66.0" sortable="false" text="Location" />
                         <TableColumn fx:id="presentCol" editable="false" prefWidth="79.0" sortable="false" text="Has Umps" />
-                        <TableColumn fx:id="paidCol" minWidth="0.0" sortable="false" text="Umps Paid" />
+                        <TableColumn fx:id="paidCol" editable="false" prefWidth="79.0" sortable="false" text="Umps Paid" />
                     </columns>
                   </TableView>
                </children>

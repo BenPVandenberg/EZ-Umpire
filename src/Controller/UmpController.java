@@ -97,7 +97,7 @@ public class UmpController {
     		FxDialogs.showError("Invalid Email", "Email for this umpire seems to be empty");
     		return;
     	}
-    	SendEmail.send(t, "\n" + msgTxt.getText());
+    	SendEmail.send(t, "New Assignments",  "\n" + msgTxt.getText());
     }
 
     /**
@@ -170,6 +170,6 @@ public class UmpController {
         	if (t.startTime.isAfter(MainMenuController.start) && t.startTime.isBefore(MainMenuController.end) && i.assignments.contains(Control.getReference(t)))
         		matchList.getItems().add(t);
         
-        msgTxt.setText(i.generateMessage());
+        msgTxt.setText(i.generateMessage() + "\nPlease text me to confirm");
     }
 }

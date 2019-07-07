@@ -81,6 +81,17 @@ public class MainMenuController {
     }
     
     @FXML
+    void generatePayReportAction(ActionEvent event) throws IOException {
+    	Stage home = new Stage();
+    	Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/ReportDialog.fxml"));
+    	home.setScene(new Scene(root));
+    	home.setTitle("Pay Report : EZ Umpires");
+    	home.getIcons().add(new Image("/Images/icon.png"));
+    	home.setResizable(false);
+    	home.show();
+    }
+    
+    @FXML
     void settingListener(ActionEvent event) {
     	FxDialogs.showInformation("WIP", "");
     }
@@ -316,7 +327,8 @@ public class MainMenuController {
         		for (Match i : Control.matches)
         			if (i.startTime.isAfter(start) && i.startTime.isBefore(end))
         				matchList.getItems().add(i);
-    		}else
+    		}
+    		else
     			FxDialogs.showError("Custom Date Range Invalid", "The date range entered is invalid or not set");
     	}
   	

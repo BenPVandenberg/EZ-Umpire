@@ -36,12 +36,7 @@ public class FileManagment{
 			o.close();
 			f.close();
 
-//		} catch (FileNotFoundException e) {
-////			System.out.println("File not found");
-//		} catch (IOException e) {
-//			System.out.println("Error initializing stream");
 		} catch (Exception e) {
-//			e.printStackTrace();
 			umpSaved = false;
 		}
 		
@@ -68,12 +63,7 @@ public class FileManagment{
 			o.close();
 			f.close();
 
-//		} catch (FileNotFoundException e) {
-////			System.out.println("File not found");
-//		} catch (IOException e) {
-//			System.out.println("Error initializing stream");
 		} catch (Exception e) {
-//			e.printStackTrace();
 			matchSaved = false;
 		}
 		
@@ -117,11 +107,8 @@ public class FileManagment{
 			oi.close();
 			fi.close();
 
-//		} catch (FileNotFoundException e) {
-////			System.out.println("File not found");
-//		} catch (IOException e) {
+		} catch (FileNotFoundException e) {
 		} catch (Exception e) {
-//			e.printStackTrace();
 			FxDialogs.showException("Unable to load Umpires.ump","", e);
 		}
 		Control.umpires = umps;
@@ -146,25 +133,22 @@ public class FileManagment{
 			for (int i=0;i<num;i++) {
 				toAdd = (Match) oi.readObject();
 				match.add(toAdd);
+				
+				/**
+				 * ONLY NEEDED FOR VERSION 1.2.0
+				 */
+				if (toAdd.diamond.equals("D1") || toAdd.diamond.equals("D2") ||toAdd.diamond.equals("D3"))
+					toAdd.diamond += " Ops";
+				toAdd.update();
 			}
 			
 			oi.close();
 			fi.close();
 
-//		} catch (FileNotFoundException e) {
-////			System.out.println("File not found");
-//		} catch (IOException e) {
+		} catch (FileNotFoundException e) {
 		} catch (Exception e) {
-//			e.printStackTrace();
 			FxDialogs.showException("Unable to load Matches.ump","", e);
 		}
 		Control.matches = match;
-		
-//		for (Umpire i: Control.umpires) { // FOR TESTING
-//			System.out.println(i);
-//		}
-//		for (Match i: Control.matches) {
-//			System.out.println(i);
-//		}
 	}
 }
