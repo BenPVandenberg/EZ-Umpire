@@ -341,7 +341,7 @@ public class MainMenuController {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@FXML
-    void initialize() {
+    void initialize() throws ClassNotFoundException {
         assert mainBackground != null : "fx:id=\"mainBackground\" was not injected: check your FXML file 'MainMenu.fxml'.";
         assert aPane != null : "fx:id=\"aPane\" was not injected: check your FXML file 'MainMenu.fxml'.";
         assert matchList != null : "fx:id=\"matchList\" was not injected: check your FXML file 'MainMenu.fxml'.";
@@ -361,7 +361,6 @@ public class MainMenuController {
 
         currentViewUpdate(null);
         
-        FileManagment.load();
         update(null);
     }
 }

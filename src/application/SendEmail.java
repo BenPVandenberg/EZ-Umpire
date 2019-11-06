@@ -22,7 +22,7 @@ public class SendEmail {
 	  	
 		String host="smtp.gmail.com";
 		final String email="Scheduling.EzUmpire@gmail.com";
-		final String authKey="_dW8g6Cn!!G_-BBdx2yF";
+		final String authKey="cyawbebrevuusrmb";
 	    
 //		String to="7053083088@msg.telus.com";
 		String to = toEmail;

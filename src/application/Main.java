@@ -11,7 +11,8 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
-		try {			
+		try {
+			FileManagment.load();
 			Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/Welcome.fxml"));
 			Scene scene = new Scene(root,412,366);
 			primaryStage.setResizable(false);

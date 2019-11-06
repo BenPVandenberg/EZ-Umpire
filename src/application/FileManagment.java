@@ -2,16 +2,36 @@ package application;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FileManagment{
 	
     /**
-     * Saves Umpires and Matches to separate files and notifies user if it was successful
+     * Saves Settings, Umpires, and Matches to separate files and notifies user if it was successful
      */
 	public static void save() {
 		String username = System.getProperty("user.name");
 		String dest = ("C:\\Users\\" + username + "\\AppData\\Roaming\\EZ_Umpire\\");
-		boolean umpSaved = true, matchSaved = true;
+		boolean setSaved = true, umpSaved = true, matchSaved = true;
+		
+//		Save Settings
+		try {
+			File file = new File(dest+"Settings.ump");
+			file.getParentFile().mkdirs();
+			file.delete();
+			
+			FileOutputStream f = new FileOutputStream(file);
+			ObjectOutputStream o = new ObjectOutputStream(f);
+			
+			o.writeObject(Control.settings);
+
+
+			o.close();
+			f.close();
+
+		} catch (Exception e) {
+			setSaved = false;
+		}
 
 //		Save Umps
 		try {
@@ -67,7 +87,7 @@ public class FileManagment{
 			matchSaved = false;
 		}
 		
-		if (matchSaved && umpSaved)
+		if (setSaved && matchSaved && umpSaved)
 			FxDialogs.showInformation("Saved successfully", "");
 		else
 			FxDialogs.showError("Save could not be saved properly", "");
@@ -75,13 +95,32 @@ public class FileManagment{
 	
 	
     /**
-     * Loads Umpires and Matches to separate files
+     * Loads Settings, Umpires, and Matches to separate files
      */
 	public static void load() {
 		Control.matches.clear();
 		Control.umpires.clear();
 		String username = System.getProperty("user.name");
 		String dest = ("C:\\Users\\" + username + "\\AppData\\Roaming\\EZ_Umpire\\");
+		
+//		Settings Load
+		try {
+
+			FileInputStream fi = new FileInputStream(new File(dest+"Settings.ump"));
+			ObjectInputStream oi = new ObjectInputStream(fi);
+			
+//			Get settings Hashmap
+			@SuppressWarnings("unchecked")
+			HashMap<String, String> set = (HashMap<String, String>) oi.readObject();
+			Control.settings = set;
+			
+			oi.close();
+			fi.close();
+
+		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
+			FxDialogs.showException("Unable to load Settings.ump","", e);
+		}
 		
 //		Umpire Load
 		ArrayList<Umpire> umps = new ArrayList<>();
@@ -133,13 +172,6 @@ public class FileManagment{
 			for (int i=0;i<num;i++) {
 				toAdd = (Match) oi.readObject();
 				match.add(toAdd);
-				
-				/**
-				 * ONLY NEEDED FOR VERSION 1.2.0
-				 */
-				if (toAdd.diamond.equals("D1") || toAdd.diamond.equals("D2") ||toAdd.diamond.equals("D3"))
-					toAdd.diamond += " Ops";
-				toAdd.update();
 			}
 			
 			oi.close();

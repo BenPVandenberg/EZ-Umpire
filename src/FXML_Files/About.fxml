@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +21,8 @@
             </Label>
             <Line endX="98.0" layoutX="177.0" layoutY="70.0" startX="-120.0" />
             <JFXButton fx:id="backBtn" layoutX="123.0" layoutY="250.0" onAction="#backAction" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: darkred;" text="Back" textFill="WHITE" />
-            <TextArea editable="false" layoutX="57.0" layoutY="84.0" prefHeight="150.0" prefWidth="219.0" text="This program is designed to &#10;make the process of scheduling&#10;umpires to be much more efficient.&#10;&#10;Hopefully it works aha." />
+            <TextArea editable="false" layoutX="57.0" layoutY="84.0" prefHeight="103.0" prefWidth="219.0" text="This program is designed to &#10;make the process of scheduling&#10;umpires to be much more efficient.&#10;&#10;Hopefully it works aha." />
+            <JFXTextField fx:id="licenceKeyTxt" alignment="CENTER" layoutX="57.0" layoutY="200.0" prefHeight="26.0" prefWidth="219.0" promptText="Licence Key" />
          </children>
       </Pane>
       <Text fill="WHITE" layoutX="280.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ben Vandenberg © 2019" />

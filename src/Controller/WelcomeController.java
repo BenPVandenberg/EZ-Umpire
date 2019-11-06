@@ -4,6 +4,9 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import application.Control;
+import application.Validation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +32,19 @@ public class WelcomeController {
     private Pane aPane;
 
     @FXML
-    void startAction(ActionEvent event) throws IOException {
+    void startAction(ActionEvent event) throws IOException, ClassNotFoundException {
     	Stage stage = (Stage) background.getScene().getWindow();
     	stage.close();
-    	
-    	Stage home = new Stage();
-    	Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/MainMenu.fxml"));
-    	home.setScene(new Scene(root,990,600));
-    	home.setTitle("Main Menu : EZ Umpires");
-    	home.getIcons().add(new Image("/Images/icon.png"));
-    	home.setResizable(false);
-    	home.show();
+
+    	if (Validation.check(Control.settings.get("key"), Control.settings.get("user"))) {
+	    	Stage home = new Stage();
+		    Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/MainMenu.fxml"));
+		    home.setScene(new Scene(root,990,600));
+		    home.setTitle("Main Menu : EZ Umpires");
+	    	home.getIcons().add(new Image("/Images/icon.png"));
+	    	home.setResizable(false);
+	    	home.show();
+    	}
     }
     
     @FXML
@@ -63,8 +68,16 @@ public class WelcomeController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws ClassNotFoundException {
         assert background != null : "fx:id=\"welcomeBackground\" was not injected: check your FXML file 'Welcome.fxml'.";
         assert aPane != null : "fx:id=\"aPane\" was not injected: check your FXML file 'Welcome.fxml'.";
+        
+        try {
+        	Control.settings.get("key");
+        	Control.settings.get("user");
+        }catch (NullPointerException e) {
+          Control.settings.put("user", System.getProperty("user.name"));
+          Control.settings.put("key", "");
+        }
     }
 }

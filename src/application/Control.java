@@ -5,10 +5,11 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Control {
-    public static ArrayList<Umpire>   umpires = new ArrayList<>();
-    public static ArrayList<Match>    matches = new ArrayList<>();
-    public static Umpire 			  umpWorking;
-    public static Match 			  matchWorking;
+    public static ArrayList<Umpire>   		umpires = new ArrayList<>();
+    public static ArrayList<Match>    		matches = new ArrayList<>();
+    public static Umpire 			  		umpWorking;
+    public static Match 			  		matchWorking;
+    public static HashMap<String, String> 	settings = new HashMap<>();
     
     /**
      * Function to add a Umpire or Match to their respective array
