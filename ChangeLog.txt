@@ -1,0 +1,6 @@
+Features:
+- Added a verification method in order to use app
+- Added product key input in about menu
+- Added a new save file "settings.ump"
+	- will be used for future settings menu
+- Changed how e-mails are sent (with older versions this feature will no longer work)
