@@ -6,4 +6,4 @@ The documentation can be found at https://drive.google.com/file/d/1V5M2GNd-NdXgE
 
 This program utilizes JavaFX 12, jfoenix-8.0.8, and cryptolens
 
-To try the app, download the "EZ Umpire.jar", and use product key: MFQTK-SAVHY-DYBSA-MMQBH
+To try the app, download and run the "EZ Umpire.jar" file.
