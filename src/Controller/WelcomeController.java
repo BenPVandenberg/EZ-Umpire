@@ -36,7 +36,7 @@ public class WelcomeController {
     	Stage stage = (Stage) background.getScene().getWindow();
     	stage.close();
 
-    	if (Validation.check(Control.settings.get("key"), Control.settings.get("user"))) {
+    	if (true){ //Validation.check(Control.settings.get("key"), Control.settings.get("user"))) {
 	    	Stage home = new Stage();
 		    Parent root = FXMLLoader.load(getClass().getResource("/FXML_Files/MainMenu.fxml"));
 		    home.setScene(new Scene(root,990,600));
