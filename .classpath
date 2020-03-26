@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="E:/Software Documents/mail.jar"/>
-	<classpathentry kind="lib" path="E:/Software Documents/JavaFX/controlsfx-8.40.15.jar"/>
-	<classpathentry kind="lib" path="E:/Software Documents/JavaFX/jfoenix-8.0.8.jar"/>
-	<classpathentry kind="lib" path="E:/Software Documents/activation.jar"/>
-	<classpathentry kind="lib" path="E:/Software Documents/cryptolens.jar"/>
-	<classpathentry kind="lib" path="E:/Software Documents/slf4j-simple-1.7.28.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Software Documents/mail.jar"/>
+	<classpathentry kind="lib" path="D:/Software Documents/JavaFX/controlsfx-8.40.15.jar"/>
+	<classpathentry kind="lib" path="D:/Software Documents/JavaFX/jfoenix-8.0.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

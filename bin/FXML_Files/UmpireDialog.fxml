@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="umpBackground" prefHeight="446.0" prefWidth="600.0" stylesheets="@../CSS/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UmpController">
+   <children>
+      <TabPane layoutX="31.0" layoutY="20.0" opacity="0.88" prefHeight="365.0" prefWidth="539.0" style="-fx-background-color: white; -fx-border-color: black;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Details">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="537.0">
+                     <children>
+                        <Text layoutX="112.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="115.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="46.609375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="115.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="nameTxt" layoutX="176.0" layoutY="29.0" onKeyReleased="#update" prefHeight="25.0" prefWidth="200.0" />
+                        <JFXTextField fx:id="emailTxt" layoutX="176.0" layoutY="64.0" prefHeight="25.0" prefWidth="200.0" />
+                        <JFXTextField fx:id="levelTxt" alignment="CENTER" layoutX="176.0" layoutY="102.0" prefHeight="25.0" prefWidth="32.0" text="0.0" />
+                        <Text layoutX="82.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <GridPane layoutX="167.0" layoutY="162.0" prefHeight="90.0" prefWidth="269.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mon" GridPane.columnIndex="1" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tues" GridPane.columnIndex="2" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wed" GridPane.columnIndex="3" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thurs" GridPane.columnIndex="4" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fri" GridPane.columnIndex="5" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6:30" GridPane.rowIndex="1" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8:30" GridPane.rowIndex="2" />
+                              <JFXCheckBox fx:id="m6" selected="true" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <JFXCheckBox fx:id="m8" selected="true" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXCheckBox fx:id="t6" selected="true" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <JFXCheckBox fx:id="t8" selected="true" text=" " GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <JFXCheckBox fx:id="w6" selected="true" text=" " GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <JFXCheckBox fx:id="w8" selected="true" text=" " GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <JFXCheckBox fx:id="th6" selected="true" text=" " GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <JFXCheckBox fx:id="th8" selected="true" text=" " GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <JFXCheckBox fx:id="f6" selected="true" text=" " GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                              <JFXCheckBox fx:id="f8" selected="true" text=" " GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Text layoutX="99.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pay Due:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="payTxt" editable="false" layoutX="170.0" layoutY="281.0" prefHeight="25.0" prefWidth="76.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Assignments">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="matchList" layoutX="24.0" layoutY="17.0" prefHeight="301.0" prefWidth="491.0">
+                          <columns>
+                            <TableColumn fx:id="idCol" editable="false" prefWidth="33.0" sortable="false" text="ID" />
+                            <TableColumn fx:id="divCol" editable="false" prefWidth="77.0" sortable="false" text="Division" />
+                              <TableColumn fx:id="genderCol" editable="false" prefWidth="73.0" sortable="false" text="Boys/Girls" />
+                              <TableColumn fx:id="timeCol" editable="false" prefWidth="58.0" sortable="false" text="Time" />
+                              <TableColumn fx:id="dateCol" editable="false" prefWidth="84.0" sortable="false" text="Date" />
+                              <TableColumn fx:id="locationCol" editable="false" prefWidth="88.0" sortable="false" text="Location" />
+                              <TableColumn fx:id="paidCol" editable="false" prefWidth="76.0" sortable="false" text="Umps Paid" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Notify">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="***Must have an internet connection">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message Preview:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="msgTxt" layoutX="135.0" layoutY="41.0" prefHeight="236.0" prefWidth="378.0" />
+                        <Button layoutX="395.0" layoutY="287.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="33.0" prefWidth="105.0" text="Send" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <JFXButton fx:id="saveBtn" layoutX="331.0" layoutY="399.0" onAction="#saveAction" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: green;" text="Save" textFill="WHITE" />
+      <JFXButton layoutX="465.0" layoutY="399.0" onAction="#cancelAction" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: darkred;" text="Cancel" textFill="WHITE" />
+   </children>
+</AnchorPane>
