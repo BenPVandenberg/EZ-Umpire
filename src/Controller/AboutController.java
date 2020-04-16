@@ -1,10 +1,7 @@
 // Ben Vandenberg © 2019
 package Controller;
 
-import application.Control;
-
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,18 +32,9 @@ public class AboutController {
 
     @FXML
     private JFXButton backBtn;
-    
-    @FXML
-    private JFXTextField licenceKeyTxt;
 
     @FXML
     void backAction(ActionEvent event) throws IOException {
-    	try {
-    		Control.settings.put("key", licenceKeyTxt.getText().trim());
-    	}catch(Exception e) {
-    		Control.settings.put("key", "");
-    	}
-    	
     	
     	Stage stage = (Stage) background.getScene().getWindow();
     	stage.close();
@@ -65,7 +53,5 @@ public class AboutController {
         assert background != null : "fx:id=\"background\" was not injected: check your FXML file 'About.fxml'.";
         assert aPane != null : "fx:id=\"aPane\" was not injected: check your FXML file 'About.fxml'.";
         assert backBtn != null : "fx:id=\"quitBtn\" was not injected: check your FXML file 'About.fxml'.";
-        
-        licenceKeyTxt.setText(Control.settings.get("key"));
     }
 }
